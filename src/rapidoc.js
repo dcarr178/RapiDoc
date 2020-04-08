@@ -421,7 +421,7 @@ export default class RapiDoc extends LitElement {
             display:flex;
           }
           .section-gap--read-mode { 
-            padding: 48px 120px 24px 100px; 
+            padding: 48px 25px 24px 25px; 
           }
         }
         
