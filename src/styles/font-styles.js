@@ -270,4 +270,10 @@ export default css`
     overflow: hidden;
   }
 
+  .internal-link {
+    color: var(--nav-accent-color);
+    font-weight: 600;
+    cursor: pointer;
+  }
+
 `;

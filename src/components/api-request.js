@@ -702,6 +702,10 @@ export default class ApiRequest extends LitElement {
       </div>`;
   }
 
+  clickSelector(selector) {
+    document.querySelector('rapi-doc').shadowRoot.querySelector(selector).click();
+  }
+
   apiCallTemplate() {
     let selectServerDropdownHtml = '';
 
@@ -719,7 +723,7 @@ export default class ApiRequest extends LitElement {
           ? html`
             <div style="display:flex; align-items:baseline;">
               <div style="font-weight:bold; padding-right:5px;">Try against API server:</div>
-              <span class = "gray-text"> ${this.serverUrl} </span>&nbsp;-&nbsp;<a href="#api-servers">change</a>
+              <span class = "gray-text"> ${this.serverUrl}</span>&nbsp;-&nbsp;<div class="internal-link" @click = '${() => this.clickSelector('#link-api-servers')}'>change api server</div>
             </div>
           `
           : ''
@@ -744,7 +748,7 @@ export default class ApiRequest extends LitElement {
                   : `${this.api_keys.length} API keys applied`
                 } 
                 </div>`
-              : html`<div style="color:var(--red)">No API key applied</div>&nbsp;-&nbsp;<a href="#authentication">add here</a>`
+              : html`<div style="color:var(--red)">No API key applied</div>&nbsp;-&nbsp;<div class="internal-link" @click = '${() => this.clickSelector('#link-authentication')}'>add api key</div>`
           }
         </div>
       </div>
