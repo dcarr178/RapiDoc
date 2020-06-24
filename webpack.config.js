@@ -73,8 +73,12 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, 'docs'),
-    port: 8080,
+    port: 80,
     hot: true,
+    host: '0.0.0.0',
+    allowedHosts: [
+        '.crunch.io'
+    ]
   },
   module: {
     rules: [

@@ -68,8 +68,18 @@ export default css`
         color: var(--blue); 
     }
 
-    h1, .sub-title { background-color: var(--grey); padding: 10px; font-size: 18px; font-weight: 600; }
-    h2 { font-size: 16px; font-weight: 800; }
+    h1, .sub-title { 
+        background-color: var(--grey); 
+        padding: 10px; 
+        font-size: 18px; 
+        font-weight: 600;
+        scroll-margin-top: 80px; 
+    }
+    h2 { 
+        font-size: 16px; 
+        font-weight: 800; 
+        scroll-margin-top: 75px; 
+    }
     h3 { font-size: 14px; font-weight: 800; }
 
     .endpoint-summary {
@@ -107,6 +117,11 @@ export default css`
     
     .expanded-endpoint-body {
         margin-bottom: 40px;
+        scroll-margin-top: 70px;
+    }
+    
+    #api-servers, #authentication, #overview {
+        scroll-margin-top: 50px;
     }
 
 `;
