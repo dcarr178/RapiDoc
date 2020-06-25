@@ -18,6 +18,7 @@ function componentBodyTemplate(sComponent) {
       <json-tree
         class="border tree"
         render-style='${this.renderStyle}'
+        quote-object-keys = '${this.quoteObjectKeys}'
         .data="${sComponent.component}"
         isLast="true"
       ></json-tree>

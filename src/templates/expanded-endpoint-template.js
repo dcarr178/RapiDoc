@@ -65,6 +65,7 @@ export function expandedEndpointBodyTemplate(path) {
         class = 'response-panel'
         .responses = "${path.responses}"
         render-style = "${this.renderStyle}"
+        quote-object-keys = '${this.quoteObjectKeys}'
         schema-style = "${this.schemaStyle}"
         active-schema-tab = "${this.defaultSchemaTab}"
         schema-expand-level = "${this.schemaExpandLevel}"

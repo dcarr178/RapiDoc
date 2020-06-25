@@ -113,6 +113,7 @@ export default class RapiDoc extends LitElement {
 
       // Internal Attributes
       selectedContentId: { type: String },
+      quoteObjectKeys: { type: String, attribute: 'quote-object-keys' },
 
     };
   }

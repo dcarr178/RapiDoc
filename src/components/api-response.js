@@ -28,6 +28,7 @@ export default class ApiResponse extends LitElement {
       parser: { type: Object },
       schemaStyle: { type: String, attribute: 'schema-style' },
       renderStyle: { type: String, attribute: 'render-style' },
+      quoteObjectKeys: { type: String, attribute: 'quote-object-keys' },
       selectedStatus: { type: String, attribute: 'selected-status' },
       selectedMimeType: { type: String },
       activeSchemaTab: { type: String, attribute: 'active-schema-tab' },
@@ -238,6 +239,7 @@ export default class ApiResponse extends LitElement {
             ? html`
               <json-tree 
                 render-style = '${this.renderStyle}'
+                quote-object-keys = '${this.quoteObjectKeys}'
                 .data="${mimeRespDetails.examples[0].exampleValue}"
                 class = 'example-panel ${this.renderStyle === 'read' ? 'border pad-8-16' : 'border-top pad-top-8'}'
               ></json-tree>`
@@ -260,6 +262,7 @@ export default class ApiResponse extends LitElement {
                   ? html`
                     <json-tree 
                       render-style = '${this.renderStyle}'
+                      quote-object-keys = '${this.quoteObjectKeys}'
                       .data = '${v.exampleValue}'
                     ></json-tree>`
                   : html`<pre>${v.exampleValue}</pre>`

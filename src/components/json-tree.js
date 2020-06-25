@@ -11,6 +11,7 @@ export default class JsonTree extends LitElement {
     return {
       data: { type: Object },
       renderStyle: { type: String, attribute: 'render-style' },
+      quoteObjectKeys: { type: String, attribute: 'quote-object-keys' },
       isLast: { type: Boolean },
     };
   }
@@ -95,12 +96,13 @@ export default class JsonTree extends LitElement {
       if (Object.keys(data).length === 0) {
         return html`${(Array.isArray(data) ? '[ ],' : '{ },')}`;
       }
+      const quoteChar = this.quoteObjectKeys === 'true' ? '"' : '';
       return html`
       <div class="open-bracket expanded ${detailType === 'array' ? 'array' : 'object'} " @click="${this.toggleExpand}" > ${detailType === 'array' ? '[' : '{'}</div>
       <div class="inside-bracket">
         ${Object.keys(data).map((key, i, a) => html`
           <div class="item"> 
-            ${detailType === 'pure_object' ? html`${key}:` : ''}
+            ${detailType === 'pure_object' ? html`${quoteChar}${key}${quoteChar}:` : ''}
             ${this.generateTree(data[key], i === (a.length - 1))}
           </div>`)
         }
