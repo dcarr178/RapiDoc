@@ -54,7 +54,7 @@ export default css`
     }
 
     .section-gap--focused-mode { 
-        padding: 48px 25px 24px 25px; 
+        padding: 64px 25px 24px 25px; 
     }
 
     #link-authentication { background-color: var(--nav-bg-color); font-size: 12px; font-weight: 400; }
@@ -78,7 +78,7 @@ export default css`
     h2 { 
         font-size: 16px; 
         font-weight: 800; 
-        scroll-margin-top: 75px; 
+        scroll-margin-top: 70px; 
     }
     h3 { font-size: 14px; font-weight: 800; }
 
@@ -122,6 +122,9 @@ export default css`
     
     #api-servers, #authentication, #overview {
         scroll-margin-top: 50px;
+    }
+    .title {
+        font-weight: 600;
     }
 
 `;
