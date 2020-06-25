@@ -681,6 +681,7 @@ export default class RapiDoc extends LitElement {
     if (!navEl.id || !navEl.dataset.contentId || !navEl.id.startsWith('link-')) {
       return;
     }
+    if (this.renderStyle === 'focused' && navEl.id.startsWith('link-tag')) return; // disable clicking tags in focused mode
     this.selectedContentId = navEl.dataset.contentId.startsWith('overview--') ? 'overview' : navEl.dataset.contentId;
     const targetElId = navEl.dataset.contentId;
     await sleep(0); // important - else contentEl will be null
