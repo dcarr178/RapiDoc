@@ -50,17 +50,17 @@ export default function navbarTemplate() {
     
     ${(this.allowTry === 'false' || this.allowServerSelection === 'false')
       ? ''
-      : html`<div class='nav-bar-info' id='link-api-servers' data-content-id='api-servers' @click = '${(e) => this.scrollToEl(e)}' > API Servers </div>`
+      : html`<div class='nav-bar-h1' id='link-api-servers' data-content-id='api-servers' @click = '${(e) => this.scrollToEl(e)}' > API Servers </div>`
     }
     ${(this.allowAuthentication === 'false' || !this.resolvedSpec.securitySchemes)
       ? ''
-      : html`<div class='nav-bar-info' id='link-authentication' data-content-id='authentication' @click = '${(e) => this.scrollToEl(e)}' > Authentication </div>`
+      : html`<div class='nav-bar-h2' id='link-authentication' data-content-id='authentication' @click = '${(e) => this.scrollToEl(e)}' > Authentication </div>`
     }
 
     <span id='link-paths' class='nav-bar-section'>Operations</span>
     ${this.resolvedSpec.tags.map((tag) => html`
       <!-- Tag -->
-      <div class='nav-bar-tag' id="link-tag--${tag.name.replace(invalidCharsRegEx, '-')}" data-content-id='tag--${tag.name.replace(invalidCharsRegEx, '-')}' @click='${(e) => this.scrollToEl(e)}'>
+      <div class='nav-bar-tag ${this.renderStyle !== 'focused' ? 'nav-bar-tag-clickable' : ''}' id="link-tag--${tag.name.replace(invalidCharsRegEx, '-')}" data-content-id='tag--${tag.name.replace(invalidCharsRegEx, '-')}' @click='${(e) => this.scrollToEl(e)}'>
         ${tag.name}
       </div>
 

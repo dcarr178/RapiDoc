@@ -57,7 +57,7 @@ export default css`
         padding: 64px 25px 24px 25px; 
     }
 
-    #link-authentication { background-color: var(--nav-bg-color); font-size: 12px; font-weight: 400; }
+    #link-authenticationZZZ { background-color: var(--nav-bg-color); font-size: 12px; font-weight: 400; }
     #nav-bar-search { 
         background-color: var(--nav-bg-color) 
     }

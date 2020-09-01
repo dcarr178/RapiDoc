@@ -49,7 +49,7 @@ export default css`
 .nav-bar-h1,
 .nav-bar-h2,
 .nav-bar-info,
-.nav-bar-tag,
+.nav-bar-tag-clickable,
 .nav-bar-path {
   display:flex;
   cursor:pointer;
@@ -95,7 +95,7 @@ export default css`
 .nav-bar-h1:hover,
 .nav-bar-h2:hover,
 .nav-bar-info:hover,
-.nav-bar-tag:hover,
+.nav-bar-tag-clickable:hover,
 .nav-bar-path:hover {
   color:var(--nav-hover-text-color);
   background-color:var(--nav-hover-bg-color);

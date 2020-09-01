@@ -683,7 +683,9 @@ export default class RapiDoc extends LitElement {
     }
     if (this.renderStyle === 'focused' && navEl.id.startsWith('link-tag')) return; // disable clicking tags in focused mode
     this.selectedContentId = navEl.dataset.contentId.startsWith('overview--') ? 'overview' : navEl.dataset.contentId;
-    const targetElId = navEl.dataset.contentId;
+    const targetElId = navEl.dataset.contentId.replace(invalidCharsRegEx, '-');
+    /* eslint-disable no-console */
+    console.log(targetElId);
     await sleep(0); // important - else contentEl will be null
     const contentEl = this.shadowRoot.getElementById(targetElId);
     if (contentEl) {
@@ -695,6 +697,8 @@ export default class RapiDoc extends LitElement {
         oldNavEl.classList.remove('active');
       }
       navEl.classList.add('active');
+      /* eslint-disable no-console */
+      console.log(`${window.location.href.split('#')[0]}#${targetElId}`);
       window.history.replaceState(null, null, `${window.location.href.split('#')[0]}#${targetElId}`);
       setTimeout(() => {
         this.isIntersectionObserverActive = true;
