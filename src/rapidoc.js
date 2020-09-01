@@ -599,6 +599,8 @@ export default class RapiDoc extends LitElement {
     } else {
       this.selectedContentId = `${this.resolvedSpec.tags[0]?.paths[0]?.method}-${this.resolvedSpec.tags[0]?.paths[0]?.path}`;
     }
+    // console.log(window.location.hash); // eslint-disable-line no-console
+    // console.log(this.selectedContentId)  // eslint-disable-line no-console
     this.requestUpdate();
     const specLoadedEvent = new CustomEvent('spec-loaded', { detail: spec });
     this.dispatchEvent(specLoadedEvent);
@@ -619,6 +621,7 @@ export default class RapiDoc extends LitElement {
     // On first time Spec load, try to navigate to location hash if provided
     if (window.location.hash) {
       if (!this.gotoPath) {
+        // console.log('expanding tree'); // eslint-disable-line no-console
         this.expandTreeToPath(window.location.hash, true, true);
       }
     }
@@ -634,8 +637,9 @@ export default class RapiDoc extends LitElement {
       path = pathInput.match(new RegExp('/.*$'));
       const pathValue = (path && path.length === 1) ? path[0] : null;
 
-      if (methodType && pathValue && methodType === v.method && pathValue === v.path) {
-        this.selectedContentId = `${methodType}-${pathValue}`;
+      if (methodType && pathValue && methodType === v.method && pathValue === v.path.replace(invalidCharsRegEx, '-')) {
+        // console.log('selectedContentId', this.selectedContentId); // eslint-disable-line no-console
+        this.selectedContentId = `${methodType}-${v.path}`;
         v.expanded = expandOperation;
         tag.expanded = true;
       }
@@ -645,6 +649,7 @@ export default class RapiDoc extends LitElement {
       // delay required, else we cant find element
       window.setTimeout(() => {
         const gotoEl = this.shadowRoot.getElementById(pathInput);
+        // console.log(`going to ${pathInput}`, gotoEl); // eslint-disable-line no-console
         if (gotoEl) {
           gotoEl.scrollIntoView({ behavior: 'auto', block: 'start' });
         }
@@ -685,7 +690,7 @@ export default class RapiDoc extends LitElement {
     this.selectedContentId = navEl.dataset.contentId.startsWith('overview--') ? 'overview' : navEl.dataset.contentId;
     const targetElId = navEl.dataset.contentId.replace(invalidCharsRegEx, '-');
     /* eslint-disable no-console */
-    console.log(targetElId);
+    // console.log(targetElId);
     await sleep(0); // important - else contentEl will be null
     const contentEl = this.shadowRoot.getElementById(targetElId);
     if (contentEl) {
@@ -698,7 +703,7 @@ export default class RapiDoc extends LitElement {
       }
       navEl.classList.add('active');
       /* eslint-disable no-console */
-      console.log(`${window.location.href.split('#')[0]}#${targetElId}`);
+      // console.log(`${window.location.href.split('#')[0]}#${targetElId}`);
       window.history.replaceState(null, null, `${window.location.href.split('#')[0]}#${targetElId}`);
       setTimeout(() => {
         this.isIntersectionObserverActive = true;
